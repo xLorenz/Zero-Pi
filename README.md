@@ -24,7 +24,7 @@ Visit [Itch.io page](https://xlorenz.itch.io/zero-pi)
 
 ( game made entirely without graphic assets, in python, using pygame )
 
-Watch the trailer!
+## Watch the trailer!
 [![Trailer](https://img.youtube.com/vi/ZNemIBubsak/maxresdefault.jpg)](https://youtu.be/ZNemIBubsak)
 
 ### [Zero Pi trailer](https://youtu.be/ZNemIBubsak)
