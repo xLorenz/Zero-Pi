@@ -24,9 +24,9 @@ monitor_size = [pygame.display.Info().current_w, pygame.display.Info().current_h
 import userInterface, lizard
 
 
-logo = pygame.image.load("CvsT logo.png")
+logo = pygame.image.load("gamefiles/CvsT logo.png")
 pygame.display.set_icon(logo)
-pygame.display.set_caption("Circulos vs Triangulo 2")
+pygame.display.set_caption("Zero pi")
 
 ScrWidth = screen.get_width()
 ScrHeight = screen.get_height()
@@ -2757,7 +2757,7 @@ class GameplayManager():
 
         self.titleDisplay.blit(titleShadow, (titleShadow.get_rect(center=(ScrWidth//2-10, 160))))
         self.titleDisplay.blit(title, (title.get_rect(center=(ScrWidth//2,150))))
-        pygame.image.save(self.titleDisplay, 'title.png')
+        #pygame.image.save(self.titleDisplay, 'title.png')
 
         self.pauseFact = f'"{random.choice(datosEn) if self.language == "EN" else random.choice(datosEs)}"'
 
@@ -3311,7 +3311,7 @@ class GameplayManager():
             p = Particle("firework", pygame.Vector2(random.randint(100,ScrWidth-100), ScrHeight), random.choice(list(colors.values())), glow=3)
             particles.append(p)
             save = Save(bullets, enemies, particles, player, snake, game)
-            save.save("save.json")
+            save.save("gamefiles/save.json")
         
 
         screen.blit(surfaces["pauseSurf"]["surface"], (0,0))
@@ -3760,7 +3760,7 @@ class GameplayManager():
             "backgroundColor": self.backgroundColor,
             "pets": [p.toDict() for p in self.pets]
         }
-        with open("settings.json", "w") as f:
+        with open("gamefiles/settings.json", "w") as f:
             json.dump(data, f, indent=2)
 
     @classmethod
@@ -3790,7 +3790,7 @@ class GameplayManager():
 
     def loadSettings(self):
         print("Loading settings...")
-        with open("settings.json", "r") as f:
+        with open("gamefiles/settings.json", "r") as f:
             d:dict = json.load(f)
         
         self.musicToggle = d.get("musicToggle", True)
@@ -3810,7 +3810,7 @@ class GameplayManager():
 
 
 class Save():
-    SAVEPATH = "save.json"
+    SAVEPATH = "gamefiles/save.json"
     def __init__(self, bullets, enemies, particles, player, snake, game):
         self.bullets = bullets
         self.enemies = enemies
@@ -3907,14 +3907,14 @@ class Save():
 
 
 game:GameplayManager = GameplayManager(loadSettings=True)
-load_json("save.json", "save copy.json") # Check for file corruption
+load_json("gamefiles/save.json", "save copy.json") # Check for file corruption
 save = Save(bullets, enemies, particles, player, snake, game)
 #save.save()
 
 def loadSave(save:Save):
     """Load game state from save file"""
     global bullets, enemies, particles, player, snake, game
-    save = Save.load("save.json")
+    save = Save.load("gamefiles/save.json")
     bullets, enemies, particles, player, snake, game = (
         save.bullets, save.enemies, save.particles, 
         save.player, save.snake, save.gameplayManager

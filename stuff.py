@@ -9,7 +9,7 @@ font.init()
 
 # pyinstaller --onefile --noconsole --icon="CvsT logoicon.ico" main.py
 #fontpath = os.path.join(os.path.dirname(__file__), 'freesansbold.ttf')
-fontpath = 'SpectralSC-SemiBold.ttf'
+fontpath = 'gamefiles/SpectralSC-SemiBold.ttf'
 
 BIGGESTESTESTESTFONT = font.Font(fontpath,200)
 BIGGESTESTESTFONT = font.Font(fontpath,150)
